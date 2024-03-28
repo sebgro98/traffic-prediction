@@ -2,13 +2,13 @@ import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
 
-chunk_size = 50000  # This is the number of lines
+chunk_size = 20  # This is the number of lines
 chunks = []
 
 # Specify the format for the datetime conversion
 date_format = '%d/%m/%Y%H:%M:%S'
 
-for chunk in pd.read_csv('data.csv', chunksize=chunk_size):
+for chunk in pd.read_csv('data2.csv', chunksize=chunk_size):
     # Convert 'Timestamp' column to datetime with the specified format
     chunk['Timestamp'] = pd.to_datetime(chunk['Timestamp'], format=date_format)
     # Set 'Timestamp' as the index
